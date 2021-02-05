@@ -35,6 +35,8 @@ export class SignUpController implements Controller {
       })
       return ok(account)
     } catch (error) {
+      // outra forma de mostrar um erro sem usar o npm test, mais aconselhavel utilizar nos debug:
+      // console.error(error)
       return serverError()
     }
   }
