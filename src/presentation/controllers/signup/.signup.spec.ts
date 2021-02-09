@@ -13,7 +13,7 @@ const makeEmailValidator = (): EmailValidator =>{
 }
 
 const makeAddAccount = (): AddAccount =>{
-    class AddAccountStub implements EmailValidator{
+    class AddAccountStub{
        async add (account: AddAccountModel): Promise<AccountModel>{
             const fakeAccount = {
                 id: 'valid_id',
