@@ -5,7 +5,7 @@ import env from '../../main/config/env'
 
 describe('SignUp Routes',() => {
   beforeAll(async () => {
-    await MongoHelper.connect(env.MONGO_URL)
+    await MongoHelper.connect(env.mongoUrl)
   })
 
   afterAll(async () => {
