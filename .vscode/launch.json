@@ -1,0 +1,31 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Attach to dev:debug",
+        "type": "node",
+        "request": "attach",
+        "protocol": "inspector",
+        "port": 4321,
+        "restart": true,
+        "cwd": "${workspaceRoot}"
+      },
+      {
+        "name": "Attach to start:debug",
+        "type": "node",
+        "request": "attach",
+        "protocol": "inspector",
+        "port": 9222,
+        "restart": true,
+        "cwd": "${workspaceRoot}"
+      },
+      {
+        "name": "Launch with debug",
+        "type": "node",
+        "request": "launch",
+        "cwd": "${workspaceRoot}",
+        "runtimeArgs": ["-r", "ts-node/register"],
+        "args": ["${workspaceRoot}/src/main/server.ts"]
+      }
+    ]
+  }
