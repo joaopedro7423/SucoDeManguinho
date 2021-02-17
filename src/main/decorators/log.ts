@@ -1,4 +1,3 @@
-// import { resolve } from 'path'
 import { Controller, HttpRequest, HttpResponse } from '../../presentation/protocols'
 
 export class LogControllerDecorator implements Controller {

@@ -38,7 +38,7 @@ export class SignUpController implements Controller {
       // outra forma de mostrar um erro sem usar o npm test, mais aconselhavel utilizar nos debug:
       // console.error(error)
 
-      return serverError()
+      return serverError(error)
     }
   }
 }
