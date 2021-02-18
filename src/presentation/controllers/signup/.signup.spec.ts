@@ -153,7 +153,7 @@ describe('SingUp Controller', () => {
             throw new Error()
         })
         const httpResponse = await sut.handle(makeFakeRequest())
-        expect(httpResponse).toEqual(serverError(new ServerError(null)))
+        expect(httpResponse).toEqual(serverError(new ServerError('null')))
        
         
     })
@@ -165,7 +165,7 @@ describe('SingUp Controller', () => {
         })
    
         const httpResponse = await  sut.handle(makeFakeRequest())
-        expect(httpResponse).toEqual(serverError(new ServerError(null)))
+        expect(httpResponse).toEqual(serverError(new ServerError('null')))
        
     })
 
