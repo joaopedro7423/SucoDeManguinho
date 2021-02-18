@@ -3,6 +3,11 @@ import env from '../../../../main/config/env'
 import { Collection } from 'mongodb'
 import { LogMongoRepository } from './log'
 
+// KKKKKK essa porra so serve para n ficar chamando a função toda hora kkkk pqp
+const makeSut = (): LogMongoRepository => {
+  return new LogMongoRepository()
+}
+
 describe('Log Mongo Repository',() => {
   let errorCollection: Collection
   // variavel constante do tipo collection
@@ -21,7 +26,7 @@ describe('Log Mongo Repository',() => {
   })
 
   test('Should create an error log on success',async () => {
-    const sut = new LogMongoRepository() // é a classe que fica na produção caraio kkkkkkkkk
+    const sut = makeSut()// é a classe que fica na produção caraio kkkkkkkkk
     await sut.logError('any_error')
     const count = await errorCollection.countDocuments()
     expect(count).toBe(1)
