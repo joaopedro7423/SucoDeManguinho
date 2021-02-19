@@ -28,13 +28,11 @@ export class LoginControler implements Controller {
       // error 403 (o usuario n tem permição)
 
       const accessToken = await this.authentication.auth(email,password)
-
       if (!accessToken) {
         return unauthorized()
       }
 
-      //  return unauthorized()
-      return ok('401')
+      return ok({ accessToken })
     } catch (error) {
       return serverError(error)
     }
