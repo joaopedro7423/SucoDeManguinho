@@ -120,4 +120,10 @@ describe('DbAthentication UseBase', () => {
     const promise = sut.auth(makeFakeAuthentication())
     await expect(promise).rejects.toThrow()
   })
+
+  test('Should call TokenGerenator with correct id', async () => {
+    const { sut } = makeSut()
+    const accessToken = await sut.auth(makeFakeAuthentication())
+    expect(accessToken).toBe('any_token') // espero que o generationSpy seja chamado com any_id
+  })
 })
