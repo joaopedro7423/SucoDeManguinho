@@ -1,7 +1,7 @@
 import { MongoHelper } from '../helpers/mongo-helper'
 import env from '../../../../main/config/env'
 import { Collection } from 'mongodb'
-import { LogMongoRepository } from './log'
+import { LogMongoRepository } from './log-mongo-repository'
 
 // KKKKKK essa porra so serve para n ficar chamando a função toda hora kkkk pqp
 const makeSut = (): LogMongoRepository => {
