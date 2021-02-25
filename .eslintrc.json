@@ -1,7 +1,7 @@
 {
     "extends": "standard-with-typescript",
     "parserOptions":{
-        "project": "./tsconfig.json"
+        "project": "./tsconfig-eslint.json"
     },
     "rules":{
         "@typescript-eslint/strict-boolean-expressions": "off",
@@ -9,6 +9,7 @@
         "@typescript-eslint/comma-spacing": "off",
         "@typescript-eslint/no-floating-promises": "off",
         "@typescript-eslint/no-misused-promises": "off",
-        "@typescript-eslint/consistent-type-definitions": "off"
+        "@typescript-eslint/consistent-type-definitions": "off",
+        "@typescript-eslint/ignore-path": "off"
     }
 }
