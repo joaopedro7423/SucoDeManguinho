@@ -10,6 +10,7 @@
         "@typescript-eslint/no-floating-promises": "off",
         "@typescript-eslint/no-misused-promises": "off",
         "@typescript-eslint/consistent-type-definitions": "off",
-        "@typescript-eslint/ignore-path": "off"
+        "@typescript-eslint/ignore-path": "off",
+        "@typescript-eslint/no-var-requires": "off"
     }
 }
