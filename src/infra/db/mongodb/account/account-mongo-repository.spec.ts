@@ -113,5 +113,11 @@ describe('Account Mongo Repository', () => {
       expect(account.email).toBe('any_email@mail.com') // se tem um email igual ao tobe
       expect(account.password).toBe('any_password') // se tem um password igual ao tobe
     })
+
+    test('Should return null if loadByToken fails', async () => {
+      const sut = makeSut()
+      const account = await sut.loadByToken('any_token')
+      expect(account).toBeFalsy()// verifica se tem algo, nao importa o que.toBeTruthy
+    })
   })
 })
