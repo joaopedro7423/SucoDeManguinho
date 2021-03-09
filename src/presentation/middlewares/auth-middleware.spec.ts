@@ -12,7 +12,7 @@ const makeFakeAccount = (): AccountModel => ({
 
 const makeFakeRequest = (): HttpRequest => ({
   headers: {
-    'x-acces-token': 'any_token'
+    'x-access-token': 'any_token'
   }
 })
 
