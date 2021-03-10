@@ -54,7 +54,7 @@ describe('AddSurvay Controller', () => {
     MockDate.set(new Date()) // moca a data/ tipo congela ela para poder rodar nos testes
   })
 
-  beforeAll(() => {
+  afterAll(() => {
     MockDate.reset()// desmoka a data
   })
 

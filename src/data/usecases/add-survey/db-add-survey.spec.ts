@@ -6,7 +6,7 @@ const makeFakeSurveyData = (): AddSurveyModel => ({
   question: 'any_question',
   answers: [{
     image: 'any_image',
-    answers: 'any_answer'
+    answer: 'any_answer'
   }],
   date: new Date()
 })
@@ -39,7 +39,7 @@ describe('AbAddSurvey UseCase',() => {
     MockDate.set(new Date()) // moca a data/ tipo congela ela para poder rodar nos testes
   })
 
-  beforeAll(() => {
+  afterAll(() => {
     MockDate.reset()// desmoka a data
   })
   test('Should call AddSurveyRepository with correct values',async () => {
