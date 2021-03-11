@@ -1,6 +1,6 @@
 import { MongoHelper } from '../helpers/mongo-helper'
 import { SurveyMongoRepository } from './survey-mongo-repository'
-import env from '../../../../main/config/env'
+import env from '@/main/config/env'
 import { Collection } from 'mongodb'
 
 let surveyCollection: Collection

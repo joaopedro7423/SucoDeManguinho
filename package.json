@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon dist/main/server.js",
-    "build": "rimraf dist && tsc",
+    "build": "rimraf dist && tsc -p tsconfig-build.json",
     "dev": "sucrase-node src/main/server.ts",
     "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",
     "test:verbose": "jest --passWithNoTests --runInBand",
@@ -51,8 +51,13 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "fast-glob": "^3.2.5",
+    "module-alias": "^2.2.2",
     "mongodb": "^3.6.4",
     "nodemon": "^2.0.7",
     "validator": "^13.5.2"
-  }
+  },
+   "_moduleAliases":{
+    "@": "dist"
+    }
+  
 }

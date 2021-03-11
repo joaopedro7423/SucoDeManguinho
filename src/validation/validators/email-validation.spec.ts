@@ -1,6 +1,6 @@
 import { EmailValidation } from './email-validation'
-import { EmailValidator } from '../protocols/email-validator'
-import { InvalidParamError } from '../../presentation/errors'
+import { EmailValidator } from '@/validation/protocols/email-validator'
+import { InvalidParamError } from '@/presentation/errors'
 
 // cria uma variavel  recebe nenhum parametro : retorna o azul ae kkkk
 const makeEmailValidator = (): EmailValidator => {
