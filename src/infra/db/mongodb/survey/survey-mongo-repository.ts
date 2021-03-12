@@ -3,8 +3,9 @@ import { SurveyModel } from '@/domain/models/survey'
 import { AddSurveyModel } from '@/domain/usecases/add-survey'
 import { AddSurveyRepository } from '@/data/protocols/db/survey/add-survey-repository'
 import { LoadSurveysRepository } from '@/data/protocols/db/survey/load-surveys-repository'
+import { LoadSurveyByIdRepository } from '@/data/usecases/load-survey-by-id/db-load-survey-by-id-protocols'
 
-export class SurveyMongoRepository implements AddSurveyRepository, LoadSurveysRepository {
+export class SurveyMongoRepository implements AddSurveyRepository, LoadSurveysRepository, LoadSurveyByIdRepository {
   async add (surveyData: AddSurveyModel): Promise<void> {
     const surveyCollection = await MongoHelper.getCollection('surveys')
     await surveyCollection.insertOne(surveyData)
@@ -15,5 +16,11 @@ export class SurveyMongoRepository implements AddSurveyRepository, LoadSurveysRe
     const surveys = surveyCollection.find().toArray()
     // const surveys: SurveyModel[] = surveyCollection.find().toArray() O manguinho colocou asssim o o dele n estava reconhecendo o tipo
     return surveys
+  }
+
+  async loadById (id: string): Promise<SurveyModel> {
+    const surveyCollection = await MongoHelper.getCollection('surveys')
+    const survey = surveyCollection.findOne({ _id: id })
+    return survey
   }
 }
