@@ -15,12 +15,12 @@ export class SurveyMongoRepository implements AddSurveyRepository, LoadSurveysRe
     const surveyCollection = await MongoHelper.getCollection('surveys')
     const surveys = surveyCollection.find().toArray()
     // const surveys: SurveyModel[] = surveyCollection.find().toArray() O manguinho colocou asssim o o dele n estava reconhecendo o tipo
-    return surveys
+    return MongoHelper.mapCollection(await surveys)
   }
 
   async loadById (id: string): Promise<SurveyModel> {
     const surveyCollection = await MongoHelper.getCollection('surveys')
     const survey = surveyCollection.findOne({ _id: id })
-    return survey
+    return survey && MongoHelper.map(await survey)
   }
 }
