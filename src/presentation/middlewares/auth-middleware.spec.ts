@@ -1,14 +1,10 @@
 import { AuthMiddleware } from './auth-middlewares'
-import { LoadAccountByToken, HttpRequest, AccountModel } from './auth-middleware-protocols'
+import { HttpRequest } from './auth-middleware-protocols'
 import { forbiden, ok, serverError } from '@/presentation/helpers/http/http-helper'
 import { AccessDeniedError } from '@/presentation/errors'
-
-const makeFakeAccount = (): AccountModel => ({
-  id: 'valid_id',
-  name: 'valid_name',
-  email: 'valid_email@mail.com',
-  password: 'valid_password'
-})
+import { LoadAccountByToken } from '@/domain/usecases/account/load-account-by-token'
+import { throwError } from '@/domain/test'
+import { mockLoadAccountByToken } from '../test'
 
 const makeFakeRequest = (): HttpRequest => ({
   headers: {
@@ -21,17 +17,8 @@ type SutType ={
   loadAccountByTokenStub: LoadAccountByToken
 }
 
-const makeLoadAccountByToken = (): LoadAccountByToken => {
-  class LoadAccountByTokenStub implements LoadAccountByToken {
-    async load (accessToken: string, role?: string): Promise<AccountModel> {
-      return new Promise(resolve => resolve(makeFakeAccount()))
-    }
-  }
-  return new LoadAccountByTokenStub()
-}
-
 const makeSut = (role?: string): SutType => {
-  const loadAccountByTokenStub = makeLoadAccountByToken()
+  const loadAccountByTokenStub = mockLoadAccountByToken()
   const sut = new AuthMiddleware(loadAccountByTokenStub, role)
 
   return {
@@ -65,12 +52,12 @@ describe('Auth Middleware',() => {
   test('Should return 200 if LoadAccountByToken returns an account',async () => {
     const { sut } = makeSut()
     const httpResponse = await sut.handle(makeFakeRequest())
-    expect(httpResponse).toEqual(ok({ accountId: 'valid_id' }))
+    expect(httpResponse).toEqual(ok({ accountId: 'any_id' }))
   })
 
   test('Should return 500 if LoadAccountByToken throws',async () => {
     const { sut,loadAccountByTokenStub } = makeSut()
-    jest.spyOn(loadAccountByTokenStub, 'load').mockReturnValueOnce(new Promise((resolve, reject) => reject(new Error())))
+    jest.spyOn(loadAccountByTokenStub, 'load').mockImplementationOnce(throwError)
     const httpResponse = await sut.handle(makeFakeRequest())
     expect(httpResponse).toEqual(serverError(new Error()))
   })
