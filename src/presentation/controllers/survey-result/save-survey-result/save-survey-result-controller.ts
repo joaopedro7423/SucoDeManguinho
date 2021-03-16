@@ -1,6 +1,8 @@
-import { Controller, HttpRequest, HttpResponse , LoadSurveyById, SaveSurveyResult } from './save-survey-result-controller-protocols'
 import { InvalidParamError } from '@/presentation/errors'
 import { forbiden, ok, serverError } from '@/presentation/helpers/http/http-helper'
+import { LoadSurveyById } from '@/domain/usecases/survey/load-survey-by-id'
+import { SaveSurveyResult } from '@/domain/usecases/survey-result/save-survey-result'
+import { Controller, HttpRequest, HttpResponse } from '@/presentation/protocols'
 
 export class SaveSurveyResultController implements Controller {
   constructor (
@@ -28,8 +30,7 @@ export class SaveSurveyResultController implements Controller {
           surveyId,
           answer,
           date: new Date()
-        }
-      )
+        })
       return ok(surveyResult)
     } catch (error) {
       return serverError(error)
