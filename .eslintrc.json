@@ -12,6 +12,7 @@
         "@typescript-eslint/consistent-type-definitions": "off",
         "@typescript-eslint/ignore-path": "off",
         "@typescript-eslint/no-var-requires": "off",
-        "@typescript-eslint/restrict-template-expressions": "off"
+        "@typescript-eslint/restrict-template-expressions": "off",
+        "@typescript-eslint/explicit-function-return-type": "off"
     }
 }
