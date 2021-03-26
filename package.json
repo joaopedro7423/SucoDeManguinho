@@ -1,6 +1,6 @@
 {
   "name": "cleannodeapi",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "main": "index.js",
   "scripts": {
     "start": "nodemon dist/main/server.js",
@@ -50,6 +50,7 @@
     "bcrypt": "^5.0.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "faker": "^5.5.0",
     "fast-glob": "^3.2.5",
     "module-alias": "^2.2.2",
     "mongodb": "^3.6.5",
