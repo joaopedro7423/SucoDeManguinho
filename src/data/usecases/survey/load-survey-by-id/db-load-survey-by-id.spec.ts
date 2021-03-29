@@ -31,7 +31,7 @@ describe('DbLoadSurveyById', () => {
   test('Should call LoadSurveyByIdRepository',async () => {
     const { sut, loadSurveyByIdRepositorySpy } = makeSut()
     await sut.loadById(surveyId)
-    expect(loadSurveyByIdRepositorySpy.id).toHaveBeenCalledWith(surveyId)
+    expect(loadSurveyByIdRepositorySpy.id).toBe(surveyId)
   })
 
   test('Should return a Survey on success',async () => {

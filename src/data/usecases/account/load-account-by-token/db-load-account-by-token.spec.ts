@@ -46,7 +46,8 @@ describe('DbLoadAccountByToken Usecase',() => {
   test('Should call LoadAccountByTokenRepository with correct values', async () => {
     const { sut, loadAccountByTokenRepositorySpy } = makeSut()
     await sut.load(token,role)
-    expect(loadAccountByTokenRepositorySpy).toBe(role)
+    expect(loadAccountByTokenRepositorySpy.token).toBe(token)
+    expect(loadAccountByTokenRepositorySpy.role).toBe(role)
   })
 
   test('Should return null if LoadAccountByTokenRepository with return null', async () => {

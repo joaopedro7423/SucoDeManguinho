@@ -16,7 +16,7 @@ export const mockAccountModel = (): AccountModel => Object.assign({},mockAddAcco
   password: faker.internet.password()
 })
 
-export const mockFakeAuthentication = (): AuthenticationParams => ({
+export const mockAuthenticationParams = (): AuthenticationParams => ({
   email: faker.internet.email(),
   password: faker.internet.password()
 })

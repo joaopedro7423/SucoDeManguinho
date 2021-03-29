@@ -27,7 +27,7 @@ describe('DbAddAccount Usecase', () => {
     const { sut, hasherSpy } = makeSut()
     const addAccountParams = mockAddAccountParams()
     await sut.add(addAccountParams)
-    expect(hasherSpy.plaintext).toHaveBeenCalledWith(addAccountParams.password)
+    expect(hasherSpy.plaintext).toBe(addAccountParams.password)
   })
 
   test('Should throw if Hasher throws', async () => {
@@ -41,7 +41,7 @@ describe('DbAddAccount Usecase', () => {
     const { sut, addAccountRepositorySpy, hasherSpy } = makeSut()
     const addAccountParams = mockAddAccountParams()
     await sut.add(addAccountParams)
-    expect(addAccountRepositorySpy.addAccountParams).toHaveBeenCalledWith({
+    expect(addAccountRepositorySpy.addAccountParams).toEqual({
       name: addAccountParams.name,
       email: addAccountParams.email,
       password: hasherSpy.digest

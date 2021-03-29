@@ -36,10 +36,10 @@ describe('DbLoadSurveyResult Usecase', () => {
     surveyId = faker.random.uuid()
   })
 
-  test('should call LoadSurveyResultRepository', async () => {
+  test('Should call LoadSurveyResultRepository', async () => {
     const { sut, loadSurveyResultRepositorySpy } = makeSut()
-    await sut.load('any_survey_id')
-    expect(loadSurveyResultRepositorySpy).toHaveBeenCalledWith(surveyId)
+    await sut.load(surveyId)
+    expect(loadSurveyResultRepositorySpy.surveyId).toBe(surveyId)
   })
 
   test('Should throw if LoadSurveyResultRepository throws', async () => {

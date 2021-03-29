@@ -30,7 +30,7 @@ describe('AbAddSurvey UseCase',() => {
 
     const surveyData = mockAddSurveyParams()
     await sut.add(surveyData)
-    expect(addSurveyRepositorySpy.addSurveyParams).toHaveBeenCalledWith(surveyData)
+    expect(addSurveyRepositorySpy.addSurveyParams).toEqual(surveyData)
   })
 
   test('Should throw if AddSurveyRepository throws', async () => {
