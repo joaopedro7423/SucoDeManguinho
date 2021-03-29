@@ -26,11 +26,11 @@ export class SignUpController implements Controller {
       if (!account) {
         return forbiden(new EmailInUseError())
       }
-      const accessToken = await this.authentication.auth({
+      const authenticationModel = await this.authentication.auth({
         email,
         password
       })
-      return ok({ accessToken })
+      return ok(authenticationModel)
     } catch (error) {
       // outra forma de mostrar um erro sem usar o npm test, mais aconselhavel utilizar nos debug:
       // console.error(error)
