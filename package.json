@@ -1,6 +1,6 @@
 {
   "name": "cleannodeapi",
-  "version": "2.5.1",
+  "version": "2.5.2",
   "main": "index.js",
   "scripts": {
     "start": "nodemon dist/main/server.js",
