@@ -4,18 +4,20 @@
         "project": "./tsconfig.json"
     },
     "rules":{
-        "@typescript-eslint/strict-boolean-expressions": "off",
-        "@typescript-eslint/return-await": "off",
-        "@typescript-eslint/comma-spacing": "off",
-        "@typescript-eslint/no-floating-promises": "off",
-        "@typescript-eslint/no-misused-promises": "off",
-        "@typescript-eslint/consistent-type-definitions": "off",
-        "@typescript-eslint/ignore-path": "off",
-        "@typescript-eslint/no-var-requires": "off",
         "@typescript-eslint/restrict-template-expressions": "off",
         "@typescript-eslint/explicit-function-return-type": "off",
-        "@typescript-eslint/indent": "off",
+        "@typescript-eslint/consistent-type-definitions": "off",
+        "@typescript-eslint/strict-boolean-expressions": "off",
         "@typescript-eslint/no-multiple-empty-lines": "off",
-        "@typescript-eslint/padded-blocks": "off"
+        "@typescript-eslint/no-floating-promises": "off",
+        "@typescript-eslint/no-misused-promises": "off",
+        "@typescript-eslint/no-var-requires": "off",
+        "@typescript-eslint/padded-blocks": "off",
+        "@typescript-eslint/comma-spacing": "off",
+        "@typescript-eslint/no-namespace": "off",
+        "@typescript-eslint/return-await": "off",
+        "@typescript-eslint/ignore-path": "off",
+        "@typescript-eslint/indent": "off",
+        "import/export":"off"
     }
 }
