@@ -1,11 +1,12 @@
 import { EmailValidator } from '@/validation/protocols/email-validator'
 
 // cria uma variavel  recebe nenhum parametro : retorna o azul ae kkkk
-export const mockEmailValidator = (): EmailValidator => {
-  class EmailValidatorStub implements EmailValidator {
-    isValid (email: string): boolean {
-      return true
-    }
+export class EmailValidatorSpy implements EmailValidator {
+  isEmailValid = true
+  email: string
+
+  isValid (email: string): boolean {
+    this.email = email
+    return this.isEmailValid
   }
-  return new EmailValidatorStub()
 }

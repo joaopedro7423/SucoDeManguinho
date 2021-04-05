@@ -1,22 +1,23 @@
 import { DbLoadSurveyById } from './db-load-survey-by-id'
-import { LoadSurveyByIdRepository } from './db-load-survey-by-id-protocols'
-import { throwError, mockSurveyModel } from '@/domain/test'
-import { mockLoadSurveyByIdRepository } from '@/data/test'
+import { throwError } from '@/domain/test'
+import { LoadSurveyByIdRepositorySpy } from '@/data/test'
 import MockDate from 'mockdate'
 
 type SutTypes = {
   sut: DbLoadSurveyById
-  loadSurveyByIdRepositoryStub: LoadSurveyByIdRepository
+  loadSurveyByIdRepositorySpy: LoadSurveyByIdRepositorySpy
 }
 
 const makeSut = (): SutTypes => {
-  const loadSurveyByIdRepositoryStub = mockLoadSurveyByIdRepository()
-  const sut = new DbLoadSurveyById(loadSurveyByIdRepositoryStub)
+  const loadSurveyByIdRepositorySpy = new LoadSurveyByIdRepositorySpy()
+  const sut = new DbLoadSurveyById(loadSurveyByIdRepositorySpy)
   return {
     sut,
-    loadSurveyByIdRepositoryStub
+    loadSurveyByIdRepositorySpy
   }
 }
+
+let surveyId: string
 
 describe('DbLoadSurveyById', () => {
   beforeAll(() => {
@@ -28,21 +29,20 @@ describe('DbLoadSurveyById', () => {
   })
 
   test('Should call LoadSurveyByIdRepository',async () => {
-    const { sut, loadSurveyByIdRepositoryStub } = makeSut()
-    const loadAllSpy = jest.spyOn(loadSurveyByIdRepositoryStub, 'loadById')
-    await sut.loadById('any_id')
-    expect(loadAllSpy).toHaveBeenCalledWith('any_id')
+    const { sut, loadSurveyByIdRepositorySpy } = makeSut()
+    await sut.loadById(surveyId)
+    expect(loadSurveyByIdRepositorySpy.id).toBe(surveyId)
   })
 
   test('Should return a Survey on success',async () => {
-    const { sut } = makeSut()
-    const survey = await sut.loadById('any_id')
-    expect(survey).toEqual(mockSurveyModel())
+    const { sut , loadSurveyByIdRepositorySpy } = makeSut()
+    const survey = await sut.loadById(surveyId)
+    expect(survey).toEqual(loadSurveyByIdRepositorySpy.surveyModel)
   })
   test('Should throw if LoadSurveyByIdRepository throws', async () => {
-    const { sut, loadSurveyByIdRepositoryStub } = makeSut()
-    jest.spyOn(loadSurveyByIdRepositoryStub, 'loadById').mockImplementationOnce(throwError)
-    const promise = sut.loadById('any_id')
+    const { sut, loadSurveyByIdRepositorySpy } = makeSut()
+    jest.spyOn(loadSurveyByIdRepositorySpy, 'loadById').mockImplementationOnce(throwError)
+    const promise = sut.loadById(surveyId)
     await expect(promise).rejects.toThrow()
   })
 })

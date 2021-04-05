@@ -13,6 +13,9 @@
         "@typescript-eslint/ignore-path": "off",
         "@typescript-eslint/no-var-requires": "off",
         "@typescript-eslint/restrict-template-expressions": "off",
-        "@typescript-eslint/explicit-function-return-type": "off"
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/indent": "off",
+        "@typescript-eslint/no-multiple-empty-lines": "off",
+        "@typescript-eslint/padded-blocks": "off"
     }
 }
