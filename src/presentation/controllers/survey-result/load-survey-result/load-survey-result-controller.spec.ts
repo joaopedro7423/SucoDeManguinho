@@ -1,6 +1,5 @@
 // exemplo de requisição get
 import { LoadSurveyResultController } from './load-survey-result-controller'
-import { HttpRequest } from './load-survey-result-controller-protocols'
 import { LoadSurveyByIdSpy, LoadSurveyResultSpy } from '@/presentation/test'
 import { forbiden, ok, serverError } from '@/presentation/helpers/http/http-helper'
 import { InvalidParamError } from '@/presentation/errors'
@@ -8,12 +7,10 @@ import { throwError } from '@/domain/test'
 import MockDate from 'mockdate'
 import faker from 'faker'
 
-const mockRequest = (): HttpRequest => ({
+const mockRequest = (): LoadSurveyResultController.Request => ({
   accountId: faker.random.uuid(),
-  params: {
-    surveyId: faker.random.uuid()
-  }
-})
+  surveyId: faker.random.uuid()
+  })
 
 type SutTypes = {
   sut: LoadSurveyResultController
@@ -45,7 +42,7 @@ describe('LoadSurveyResult Controller', () => {
     const { sut, loadSurveyByIdSpy } = makeSut()
     const httpRequest = mockRequest()
     await sut.handle(httpRequest)
-    expect(loadSurveyByIdSpy.id).toBe(httpRequest.params.surveyId)
+    expect(loadSurveyByIdSpy.id).toBe(httpRequest.surveyId)
   })
 
   test('Should return 403 if LoadSurveyById returns null', async () => {
@@ -66,7 +63,7 @@ describe('LoadSurveyResult Controller', () => {
     const { sut, loadSurveyResultSpy } = makeSut()
     const httpRequest = mockRequest()
     await sut.handle(httpRequest)
-    expect(loadSurveyResultSpy.surveyId).toBe(httpRequest.params.surveyId)
+    expect(loadSurveyResultSpy.surveyId).toBe(httpRequest.surveyId)
     expect(loadSurveyResultSpy.accountId).toBe(httpRequest.accountId)
   })
 
