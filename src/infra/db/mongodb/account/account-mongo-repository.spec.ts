@@ -96,10 +96,7 @@ describe('AccountMongoRepository', () => {
       const account = await sut.loadByToken(accessToken)
       expect(account).toBeTruthy()// verifica se tem algo, nao importa o que.toBeTruthy
       expect(account.id).toBeTruthy()// se ele tem um id
-      expect(account.name).toBe(name) // se tem um nome igual ao tobe
-      expect(account.email).toBe(email) // se tem um email igual ao tobe
-      expect(account.password).toBe(password) // se tem um password igual ao tobe
-    })
+     })
 
     test('Should return an account on loadByToken with admin role', async () => {
       const sut = makeSut()
@@ -113,10 +110,7 @@ describe('AccountMongoRepository', () => {
       const account = await sut.loadByToken(accessToken, 'admin')
       expect(account).toBeTruthy()// verifica se tem algo, nao importa o que.toBeTruthy
       expect(account.id).toBeTruthy()// se ele tem um id
-      expect(account.name).toBe(name) // se tem um nome igual ao tobe
-      expect(account.email).toBe(email) // se tem um email igual ao tobe
-      expect(account.password).toBe(password) // se tem um password igual ao tobe
-    })
+       })
 
     test('Should return null on loadByToken with invalid role', async () => {
       const sut = makeSut()
@@ -142,10 +136,7 @@ describe('AccountMongoRepository', () => {
       const account = await sut.loadByToken(accessToken)
       expect(account).toBeTruthy()// verifica se tem algo, nao importa o que.toBeTruthy
       expect(account.id).toBeTruthy()// se ele tem um id
-      expect(account.name).toBe(name) // se tem um nome igual ao tobe
-      expect(account.email).toBe(email) // se tem um email igual ao tobe
-      expect(account.password).toBe(password) // se tem um password igual ao tobe
-    })
+     })
 
     test('Should return null if loadByToken fails', async () => {
       const sut = makeSut()
