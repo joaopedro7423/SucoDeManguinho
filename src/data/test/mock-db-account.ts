@@ -3,6 +3,7 @@ import { LoadAccountByEmailRepository } from '../protocols/db/account/load-accou
 import { LoadAccountByTokenRepository } from '../protocols/db/account/load-account-by-token-repository'
 import { UpdateAccessTokenRepository } from '../protocols/db/account/update-access-token-repository'
 import faker from 'faker'
+import { CheckAccountByEmailRepository } from '../protocols/db/account'
 
 export class AddAccountRepositorySpy implements AddAccountRepository {
     result = true
@@ -22,9 +23,18 @@ export class LoadAccountByEmailRepositorySpy implements LoadAccountByEmailReposi
   }
 
   email: string
-  loadAccountByEmailRepositorySpy: { id: any, name: any, password: any }
 
   async loadByEmail (email: string): Promise<LoadAccountByEmailRepository.Result> {
+     this.email = email
+    return Promise.resolve(this.result)
+    }
+  }
+
+export class CheckAccountByEmailRepositorySpy implements CheckAccountByEmailRepository {
+  result = false
+  email: string
+
+  async checkByEmail (email: string): Promise<CheckAccountByEmailRepository.Result> {
      this.email = email
     return Promise.resolve(this.result)
     }
