@@ -28,13 +28,9 @@ describe('AccountMongoRepository', () => {
     test('Should return an account on success', async () => {
       const sut = makeSut()
       const addAccountParams = mockAddAccountParams()
-      const account = await sut.add(addAccountParams)
-      expect(account).toBeTruthy()// verifica se tem algo, nao importa o que.toBeTruthy
-      expect(account.id).toBeTruthy()
-      expect(account.name).toBe(addAccountParams.name)
-      expect(account.email).toBe(addAccountParams.email)
-      expect(account.password).toBe(addAccountParams.password)
-    })
+      const isValid = await sut.add(addAccountParams)
+      expect(isValid).toBe(true)
+     })
   })
 
   describe('loadByEmail()',() => {
@@ -46,7 +42,6 @@ describe('AccountMongoRepository', () => {
       expect(account).toBeTruthy()// verifica se tem algo, nao importa o que.toBeTruthy
       expect(account.id).toBeTruthy()// se ele tem um id
       expect(account.name).toBe(addAccountParams.name) // se tem um nome igual ao tobe
-      expect(account.email).toBe(addAccountParams.email) // se tem um email igual ao tobe
       expect(account.password).toBe(addAccountParams.password) // se tem um password igual ao tobe
     })
 
