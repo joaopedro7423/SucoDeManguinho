@@ -2,7 +2,7 @@ import { LoadSurveyByIdRepository, LoadSurveyById } from './db-load-survey-by-id
 
 export class DbLoadSurveyById implements LoadSurveyById {
   constructor (private readonly loadSurveyByIdRepository: LoadSurveyByIdRepository) {}
-  async loadById (id: string): Promise<LoadSurveyById.Result> {
+  async loadById (id: string): Promise<LoadSurveyByIdRepository.Result> {
     return this.loadSurveyByIdRepository.loadById(id)
   }
 }

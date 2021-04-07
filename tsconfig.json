@@ -6,6 +6,7 @@
         "esModuleInterop": true,
         "strictNullChecks": false,
         "sourceMap": true,
+        "allowSyntheticDefaultImports": true,
         "rootDir": "src",
         "baseUrl": "src",
         "paths": {

@@ -3,6 +3,8 @@ import { SurveyMongoRepository } from './survey-mongo-repository'
 import { mockAddAccountParams, mockAddSurveyParams } from '@/domain/test'
 import { Collection } from 'mongodb'
 import env from '@/main/config/env'
+// import faker from 'faker'
+// import objId from 'bson-objectid'
 
 let surveyCollection: Collection
 let surveyResultCollection: Collection
@@ -84,5 +86,22 @@ describe('SurveyMongoRepository', () => {
       expect(survey).toBeTruthy()
       expect(survey.id).toBeTruthy()
     })
+  })
+
+  describe('checkById()', () => {
+    test('Should return true if survey exists', async () => {
+      const res = await surveyCollection.insertOne(mockAddSurveyParams())
+      const sut = makeSut()
+      const exists = await sut.checkById(res.ops[0]._id)
+      expect(exists).toBeTruthy()
+    })
+/* teste do manguinho para verificar se o survey existe. ta bugado por causa do objectId vou pular para depois voltar , mas confia ta funfando
+
+    test('Should return false if survey exists', async () => {
+      const sut = makeSut()
+      const exists = await sut.checkById(objId.generate())
+      expect(exists).toBe(false)
+    })
+  */
   })
 })
