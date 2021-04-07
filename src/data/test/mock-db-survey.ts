@@ -3,7 +3,7 @@ import { LoadSurveyByIdRepository } from '../protocols/db/survey/load-surveys-by
 import { SurveyModel } from '@/domain/models/survey'
 import { mockSurveyModel, mockSurveyModels } from '@/domain/test/mock-survey'
 import { LoadSurveysRepository } from '../protocols/db/survey/load-surveys-repository'
-import { CheckSurveyByIdRepository } from '../protocols/db/survey'
+import { CheckSurveyByIdRepository } from '../protocols/db/survey/check-surveys-by-id-repository'
 
 export class AddSurveyRepositorySpy implements AddSurveyRepository {
     addSurveyParams: AddSurveyRepository.Params
