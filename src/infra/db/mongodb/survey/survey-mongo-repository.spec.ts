@@ -4,7 +4,7 @@ import { mockAddAccountParams, mockAddSurveyParams } from '@/domain/test'
 import { Collection } from 'mongodb'
 import env from '@/main/config/env'
 // import faker from 'faker'
-// import objId from 'bson-objectid'
+import FakeObjectID from 'bson-objectid'
 
 let surveyCollection: Collection
 let surveyResultCollection: Collection
@@ -86,6 +86,30 @@ describe('SurveyMongoRepository', () => {
       expect(survey).toBeTruthy()
       expect(survey.id).toBeTruthy()
     })
+
+    test('Should return null if survey does not exists', async () => {
+      const sut = makeSut()
+      const survey = await sut.loadById(FakeObjectID.generate())
+      expect(survey).toBeFalsy()
+    })
+  })
+
+  describe('loadAnswers()', () => {
+    test('Should load answers on success', async () => {
+      const res = await surveyCollection.insertOne(mockAddSurveyParams())
+      const survey = res.ops[0]
+      const sut = makeSut()
+      const answers = await sut.loadAnswers(survey._id)
+      expect(answers).toEqual([
+        survey.answers[0].answer,
+        survey.answers[1].answer])
+    })
+
+    test('Should return empty array if survey does not exists', async () => {
+      const sut = makeSut()
+      const answers = await sut.loadAnswers(FakeObjectID.generate())
+      expect(answers).toEqual([])
+    })
   })
 
   describe('checkById()', () => {
@@ -95,13 +119,12 @@ describe('SurveyMongoRepository', () => {
       const exists = await sut.checkById(res.ops[0]._id)
       expect(exists).toBeTruthy()
     })
-/* teste do manguinho para verificar se o survey existe. ta bugado por causa do objectId vou pular para depois voltar , mas confia ta funfando
+// teste do manguinho para verificar se o survey existe. ta bugado por causa do objectId vou pular para depois voltar , mas confia ta funfando
 
     test('Should return false if survey exists', async () => {
       const sut = makeSut()
-      const exists = await sut.checkById(objId.generate())
-      expect(exists).toBe(false)
+      const exists = await sut.checkById(FakeObjectID.generate())
+      expect(exists).toBeFalsy()
     })
-  */
   })
 })
