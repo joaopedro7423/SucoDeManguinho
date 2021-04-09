@@ -29,5 +29,4 @@ export namespace LoadSurveyResultController {
     surveyId: string
     accountId: string
    }
-
   }
