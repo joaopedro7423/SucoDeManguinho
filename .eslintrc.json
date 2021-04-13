@@ -1,5 +1,14 @@
 {
-    "extends": "standard-with-typescript",
+    "settings":{
+        "react":{
+            "version":"detect"
+        }
+    },
+    "extends": [
+    "standard-with-typescript",
+    "plugin:react/recommended"
+    ],
+    "plugins":["react"],
     "parserOptions":{
         "project": "./tsconfig.json"
     },
@@ -18,6 +27,8 @@
         "@typescript-eslint/return-await": "off",
         "@typescript-eslint/ignore-path": "off",
         "@typescript-eslint/indent": "off",
-        "import/export":"off"
+        "import/export":"off",
+        "react/jsx-uses-react":"error",
+        "react/jsx-uses-vars":"error"
     }
 }
