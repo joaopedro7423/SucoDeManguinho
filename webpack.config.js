@@ -10,7 +10,7 @@ module.exports = {
         filename: 'bundle.js'
     },
      resolve:{
-         extension: ['.ts','.tsx','.js','scss'],
+        extensions: ['.ts', '.tsx', '.js', 'scss'],
          alias:{
              '@':path.join(__dirname, 'src')
          }
@@ -37,11 +37,12 @@ module.exports = {
      devServer: {
          contentBase: './public',
          writeToDisk: true,
-         historyApiFallback: true
+         historyApiFallback: true,
+         port: 8080
      },
      externals:{
          react: 'React',
-         'react-dom': 'ReactDom'
+         'react-dom': 'ReactDOM',
      },
      plugins: [
          new CleanWebpackPlugin()

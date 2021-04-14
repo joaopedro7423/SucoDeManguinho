@@ -11,6 +11,7 @@ module.exports = {
   ],
   coverageDirectory: 'coverage',
   preset: '@shelf/jest-mongodb',
+  testEnvironment:'jsdom',
   transform: {
     '.+\\.(ts/tsx)$': 'ts-jest'
   },
