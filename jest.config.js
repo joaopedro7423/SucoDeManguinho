@@ -6,7 +6,8 @@ module.exports = {
   collectCoverageFrom: [
     '<rootDir>/src/**/*.ts',
     '!<rootDir>/src/main/**',
-    '!**/test/**'
+    '!**/test/**',
+    '!**/*.d.ts'
   ],
   coverageDirectory: 'coverage',
   preset: '@shelf/jest-mongodb',
@@ -14,6 +15,8 @@ module.exports = {
     '.+\\.(ts/tsx)$': 'ts-jest'
   },
   moduleNameMapper:{
-    '@/(.*)':'<rootDir>/src/$1'
+    '@/(.*)':'<rootDir>/src/$1',
+    '\\.scss$':'identity-obj-proxy'
   }
 }
+
