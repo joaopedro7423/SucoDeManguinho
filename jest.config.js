@@ -4,20 +4,24 @@ module.exports = {
 
   roots: ['<rootDir>/src'],
   collectCoverageFrom: [
-    '<rootDir>/src/**/*.ts',
-    '!<rootDir>/src/main/**',
+    '<rootDir>/src/**/*.{ts,tsx}',
+    '!<rootDir>/src/main/**/*',
+    '!<rootDir>/src/**/index.ts',
     '!**/test/**',
     '!**/*.d.ts'
+  ],
+   testPathIgnorePatterns: [
+    '<rootDir>/node_modules/',
+    '<rootDir>/src/main/test/cypress'
   ],
   coverageDirectory: 'coverage',
   preset: '@shelf/jest-mongodb',
   testEnvironment:'jsdom',
   transform: {
-    '.+\\.(ts/tsx)$': 'ts-jest'
+    '.+\\.(ts|tsx)$': 'ts-jest'
   },
   moduleNameMapper:{
     '@/(.*)':'<rootDir>/src/$1',
-    '\\.scss$':'identity-obj-proxy'
+    '\\.(css|less|scss|sass)$':'jest-transform-stub'
   }
 }
-
