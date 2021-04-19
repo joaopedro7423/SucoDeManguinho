@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react'
 import Styles from './login-styles.scss'
 import { LoginHeader,Footer,FormStatus,Input } from '@/presentation/pages/components'
 import Context from '@/presentation/pages/contexts/form/form-context'
-import { Validation } from '@/presentation/protocols'
+import { ValidationR } from '@/presentation/protocols'
 
 type Props = {
-    validation: Validation
+    validation: ValidationR
 }
 
 const Login: React.FC<Props> = ({ validation }: Props) => {
@@ -18,11 +18,11 @@ const Login: React.FC<Props> = ({ validation }: Props) => {
         mainError: ''
     })
     useEffect(() => {
-        validation.validate({ email: state.email })
+        validation.validate('email', state.email)
     }, [state.email])
 
     useEffect(() => {
-        validation.validate({ password: state.password })
+        validation.validate('password', state.password)
     }, [state.password])
 
     return (
