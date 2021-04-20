@@ -1,5 +1,5 @@
 export * from './controller'
 export * from './http'
 export * from './validation'
-export * from './validationR'
+export * from './validation-react'
 export * from './middleware'
