@@ -53,4 +53,24 @@ describe('Login Component', () => {
                 expect(passwordStatus.title).toBe(validationStub.errorMessage)
                 expect(passwordStatus.textContent).toBe('🖕')
         })
+
+        test('Should show valid password state if Validation succeeds', () => {
+                const { sut, validationStub } = makeSut()
+                validationStub.errorMessage = null // se n tem error message quer dizer que a validação passou kkkk
+                const passwordInput = sut.getByTestId('password')
+                fireEvent.input(passwordInput,{ target: { value: faker.internet.password() } }) // alterando o input de um campo
+                const passwordStatus = sut.getByTestId('password-status')
+                expect(passwordStatus.title).toBe('Tudo certo meu consagrado!!!')
+                expect(passwordStatus.textContent).toBe('👌')
+        })
+
+        test('Should show valid email state if Validation succeeds', () => {
+                const { sut, validationStub } = makeSut()
+                validationStub.errorMessage = null // se n tem error message quer dizer que a validação passou kkkk
+                const emailInput = sut.getByTestId('email')
+                fireEvent.input(passwordInput,{ target: { value: faker.internet.password() } }) // alterando o input de um campo
+                const passwordStatus = sut.getByTestId('password-status')
+                expect(passwordStatus.title).toBe('Tudo certo meu consagrado!!!')
+                expect(passwordStatus.textContent).toBe('👌')
+        })
 })
