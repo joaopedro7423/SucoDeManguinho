@@ -20,8 +20,11 @@ export class AuthenticationSpy implements Authentication {
     name: faker.name.findName()
   }
 
+  callsCount = 0
+
   async auth (authenticationParams: Authentication.Params): Promise<Authentication.Result> {
     this.authenticationParams = authenticationParams
+    this.callsCount++
     return Promise.resolve(this.authenticationModel)
   }
 }
