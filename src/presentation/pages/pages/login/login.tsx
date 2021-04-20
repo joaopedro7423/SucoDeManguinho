@@ -35,7 +35,7 @@ const Login: React.FC<Props> = ({ validation }: Props) => {
             <Input type="email" name="email" placeholder="Digite o seu e-mail" />
             <Input type="password" name="password" placeholder="Digite a sua senha" />
 
-            <button data-testid="submit" disabled type="submit" className={Styles.submit}>Entrar</button>
+            <button data-testid="submit" disabled={!!state.emailError || !!state.passwordError} type="submit" className={Styles.submit}>Entrar</button>
             <span className={Styles.link}>Criar Conta</span>
             <FormStatus />
          </form>
@@ -45,3 +45,5 @@ const Login: React.FC<Props> = ({ validation }: Props) => {
     )
 }
 export default Login
+
+// disabled={!!state.emailError || !!state.passwordError} os !! serve para converter para booleano
