@@ -17,11 +17,11 @@ const Input: React.FC<Props> = (props: Props) => {
         })
     }
     const getStatus = (): string => {
-        return '🖕'
+        return error ? '🖕' : '👌' // famoso "se tem error retarna '🖕' se não  '👌' "
     }
 
     const getTitle = (): string => {
-        return error
+        return error || 'Tudo certo meu consagrado!!!'
     }
         return (
         <div className={Styles.inputWrap}>
