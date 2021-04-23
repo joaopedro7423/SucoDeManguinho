@@ -12,7 +12,7 @@ const makeSut = (fieldName: string): SutTypes => {
             new FieldValidationSpy(fieldName),
             new FieldValidationSpy(fieldName)
         ]
-        const sut = new ValidationCompositeReact(fieldValidationsSpy)
+        const sut = ValidationCompositeReact.build(fieldValidationsSpy)
         return {
             sut,
             fieldValidationsSpy
